@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結局 3</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const happyNumber = parseInt(localStorage.getItem('happy_number')) || 0;
+
+            // 根據歡愉值顯示結局描述
+            const endingContainer = document.getElementById('endingContainer');
+            const endingDescription = happyNumber >100
+                ? `<p>故障結局：你得到了啊哈的注視!!!!!!!!!!!!!!</p>
+                   <img src="aha.jpg" alt="啊哈" style="width:100%; height:auto;">`
+                : `<p>未知結局：似乎有什麼超出預期的事情發生了...</p>`;
+
+            // 使用 innerHTML 設定內容，支援文字和圖片
+            endingContainer.innerHTML = endingDescription;
+
+            // 清除遊戲進度
+            document.getElementById('resetButton').addEventListener('click', () => {
+                localStorage.clear();
+                location.href = 'shouye.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>遊戲結束</h1>
+    </header>
+    <main>
+        <!-- 用來顯示結局的容器 -->
+        <div id="endingContainer">正在生成結局...</div>
+        <button id="resetButton">回到首頁</button>
+    </main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結局 1</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const happyNumber = parseInt(localStorage.getItem('happy_number')) || 0;
+
+            // 根據歡愉值顯示結局描述
+            const endingDescription = happyNumber <= 60
+                ? '正常結局：保姆機器人完成了所有任務，一切恢復平靜。'
+                : '未知結局：似乎有什麼超出預期的事情發生了...';
+
+            document.getElementById('endingDescription').textContent = endingDescription;
+
+            // 清除遊戲進度
+            document.getElementById('resetButton').addEventListener('click', () => {
+                localStorage.clear();
+                location.href = 'shouye.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>遊戲結束</h1>
+    </header>
+    <main>
+        <p id="endingDescription">正在生成結局...</p>
+        <button id="resetButton">回到首頁</button>
+    </main>
+</body>
+</html>
+

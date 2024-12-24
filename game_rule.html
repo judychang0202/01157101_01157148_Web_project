@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲規則</title>
+    <style>
+        /* Apply background image */
+        body {
+            background-image: url('background3.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Make sure to load the Pacifico font */
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        /* Center the title and make it bigger */
+        h1 {
+            font-size: 6em;
+            margin-top: 50px;
+            color: plum;
+        }
+
+        /* Style the game rules list */
+        ul {
+            font-size: 3em;
+            text-align: center;
+            margin: 50px auto;
+            width: 80%;
+            list-style-type: none;
+            padding: 0;
+            color:purple
+        }
+
+        /* Button style */
+        button {
+            font-size: 1.5em;
+            background-color: plum;
+            color: powderblue;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10; /* Ensure it appears above other content */
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <button onclick="location.href='shouye.html'">回到首頁</button>
+    <header>
+        <h1>遊戲規則</h1>
+    </header>
+    <main>
+        <section>
+            <ul>
+                <li>先選正常模式以及刺激模式來進入遊戲</li>
+                <li>在遊戲中，你可以讓保姆機器人完成多個請求</li>
+                <li>經過多次的選擇後，可以知道主人和小孩的結局</li>
+                <li>p.s. 正常模式和刺激模式都有可能觸發小彩蛋喔~</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

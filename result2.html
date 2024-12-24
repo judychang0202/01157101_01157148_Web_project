@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #endingDescription {
+            white-space: pre-line;
+        }
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結局 2</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const happyNumber = parseInt(localStorage.getItem('happy_number')) || 0;
+
+            // 根據歡愉值顯示結局描述
+            const endingDescription = (happyNumber > 60 && happyNumber <= 100)
+                ? '瘋掉結局：\n 🍌摆🍌满🍌香🍌蕉🍌的🍌小🍌岛🍌\n 🙈睡🙉蕉🐵小🙊猴🙉的🐒爱🐵巢🙊\n 吃🍌完🍌香🍌蕉🍌就🍌睡🍌觉🍌\n 🐒快🙉快🐵乐🐵乐🐵没🙉烦🙊恼🐒\n 🍌睡🍌蕉🍌小🍌猴🍌真🍌是🍌好🍌\n 🙊幸🐒福🐵美🐵满🐵没🙉烦🐵恼🐒'
+                : '未知結局：似乎有什麼超出預期的事情發生了...';
+
+            document.getElementById('endingDescription').textContent = endingDescription;
+
+            // 清除遊戲進度
+            document.getElementById('resetButton').addEventListener('click', () => {
+                localStorage.clear();
+                location.href = 'shouye.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>遊戲結束</h1>
+    </header>
+    <main>
+        <p id="endingDescription">正在生成結局...</p>
+        <button id="resetButton">回到首頁</button>
+    </main>
+</body>
+</html>
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            font-family: 'Pacifico', cursive;
+            height: 100vh;
+            overflow: hidden; /* 確保不會有滾動條 */
+        }
+
+        .background2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('background2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .background1 {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: auto;
+            z-index: -1;
+            background-color: transparent; /* 強制背景透明 */
+        }
+
+        main {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 6em;
+            color: plum;
+            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+
+        button {
+            font-size: 2em;
+            padding: 20px 40px;
+            margin: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: plum;
+            color: powderblue; /* 修改字體顏色 */
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .link-button {
+            font-size: 1.5em; /* Smaller font size */
+            padding: 15px 30px;
+            background-color: plum; /* Adjust the background color */
+            color: powderblue;
+            text-decoration: none;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .link-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="background2"></div>
+    <img src="background1.jpg" alt="Background 1" class="background1">
+    <main>
+        <h1>保姆機器人</h1>
+        <button onclick="location.href='game_rule.html'">遊戲規則</button>
+        <button onclick="location.href='mode_chosen.html'">開始遊戲</button>
+        <!-- New Link Button for the Project Presentation -->
+        <br/>
+        <a href="https://docs.google.com/presentation/d/1Zh7Jf31bc6gNzVnl5Q8ZIlDuV8AbP6uZYb_nAoeu2so/edit?usp=sharing" class="link-button" target="_blank">專案簡報</a>
+    </main>
+</body>
+</html>
+
+

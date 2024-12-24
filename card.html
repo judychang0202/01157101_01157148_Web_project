@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw a Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background4.jpg');
+            background-size: cover; /* 讓background4圖片覆蓋整個頁面 */
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+        }
+
+        /* background5.jpg 放置在左側並縮小 - 已刪除此部分 */
+        .background-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%; /* 不顯示背景圖片 */
+        }
+
+        header {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            font-size: 2.5rem; /* 設定較小的標題 */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        main {
+            position: absolute;
+            top: 25%; /* 調整按鈕位置到標題下方 */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* 增加按鈕間距 */
+        }
+
+        button {
+            padding: 20px 40px; /* 增加按鈕的內邊距 */
+            font-size: 2rem; /* 設定較大的字體 */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.2); /* 讓按鈕放大 */
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+    <script>
+        // 初始化請求卡內容
+        function initializeCard() {
+            const count = parseInt(localStorage.getItem('count')) || 0;
+            const happyNumber = parseInt(localStorage.getItem('happy_number')) || 0;
+
+            if (count >= 20) {
+                // 根據歡愉值進入不同結局
+                if (happyNumber > 100) {
+                    location.href = 'result3.html'; // 故障結局
+                } else if (happyNumber > 60) {
+                    location.href = 'result2.html'; // 瘋掉結局
+                } else {
+                    location.href = 'result1.html'; // 正常結局
+                }
+                return;
+            }
+
+            // 更新計數器
+            localStorage.setItem('count', count + 1);
+
+            // 隨機選擇三個事件
+            const events = Array.from({ length: 30 }, (_, i) => i + 1);
+            const selectedEvents = events.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+            // 設置按鈕內容
+            for (let i = 0; i < selectedEvents.length; i++) {
+                const eventNumber = selectedEvents[i];
+                const button = document.getElementById(`event${i + 1}`);
+                button.dataset.incidentNumber = eventNumber;
+
+                // 根據事件編號設置按鈕的文字
+                button.textContent = getButtonLabel(eventNumber);
+            }
+        }
+
+        // 處理選擇事件
+        function goToIncident(button) {
+            const incidentNumber = button.dataset.incidentNumber;
+            location.href = `incident.html?incident_number=${incidentNumber}`;
+        }
+
+        // 根據事件編號返回相對應的按鈕文字
+        function getButtonLabel(incidentNumber) {
+            const labels = {
+                1: "地板髒了，請保姆機器人打掃",
+                2: "我餓了，請保姆機器人做飯",
+                3: "保姆和小孩玩",
+                4: "去海邊度假",
+                5: "吃點心",
+                6: "去參觀大炮",
+                7: "打遊戲",
+                8: "跳舞",
+                9: "喂猫",
+                10: "刷牙洗臉",
+                11: "搭乘交通工具",
+                12: "購物",
+                13: "洗衣服",
+                14: "運動",
+                15: "讀書",
+                16: "看電影",
+                17: "找人聊天",
+                18: "修理物品",
+                19: "倒垃圾",
+                20: "種植",
+                21: "喝飲料",
+                22: "看醫生",
+                23: "整理房間",
+                24: "接小孩回家",
+                25: "發呆",
+                26: "去博物館",
+                27: "演奏",
+                28: "去體驗森林浴",
+                29: "請保姆機器人幫忙收一下包裹",
+                30: "比賽跑步"
+            };
+
+            return labels[incidentNumber] || `事件${incidentNumber}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeCard);
+    </script>
+</head>
+<body>
+    <div class="background-top"></div>
+    <header>
+        <h1>請選擇一個事件</h1>
+    </header>
+    <main>
+        <button id="event1" onclick="goToIncident(this)"></button>
+        <button id="event2" onclick="goToIncident(this)"></button>
+        <button id="event3" onclick="goToIncident(this)"></button>
+    </main>
+</body>
+</html>

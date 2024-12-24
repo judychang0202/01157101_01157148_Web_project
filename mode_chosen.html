@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選擇模式</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('background2.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Pacifico', cursive;
+            color: plum;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* 將內容置於上方 */
+            align-items: center;
+            padding-top: 40px; /* 讓標題更靠近頂部 */
+        }
+        header h1 {
+            font-size: 6em;
+            margin-bottom: 20px; /* 減少標題底部的間距 */
+        }
+        main {
+            display: flex;
+            justify-content: center; /* 讓按鈕置中 */
+            width: 100%; /* 讓按鈕佔滿可用寬度 */
+        }
+        button {
+            font-size: 5em;
+            padding: 100px 50px; /* 增加按鈕的長度，讓長 > 寬 */
+            background-color: plum; /* Tomate */
+            color: powderblue;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 30px; /* 在按鈕間加點間距 */
+        }
+        button:hover {
+            background-color: white;
+        }
+    </style>
+    <script>
+        function selectMode(mode) {
+            localStorage.setItem('mode', mode);
+            // 設定機率
+            if (mode === 'normal') {
+                localStorage.setItem('normal1_chance', 45);
+                localStorage.setItem('normal2_chance', 45);
+                localStorage.setItem('child_chance', 10);
+                localStorage.setItem('special1_chance', 0);
+                localStorage.setItem('special2_chance', 0);
+            } else if (mode === 'exciting') {
+                localStorage.setItem('normal1_chance', 35);
+                localStorage.setItem('normal2_chance', 35);
+                localStorage.setItem('child_chance', 25);
+                localStorage.setItem('special1_chance', 2.5);
+                localStorage.setItem('special2_chance', 2.5);
+            }
+            location.href = 'card.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>選擇模式</h1>
+    </header>
+    <main>
+        <button onclick="selectMode('normal')">正常模式</button>
+        <button onclick="selectMode('exciting')">刺激模式</button>
+    </main>
+</body>
+</html>
