@@ -10,47 +10,41 @@
             padding: 0;
             font-family: Arial, sans-serif;
             background-image: url('background4.jpg');
-            background-size: cover; /* 讓background4圖片覆蓋整個頁面 */
+            background-size: cover;
             background-position: center;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             color: white;
         }
 
-        /* background5.jpg 放置在左側並縮小 - 已刪除此部分 */
         .background-top {
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
-            width: 0%; /* 不顯示背景圖片 */
+            width: 0%;
         }
 
         header {
-            position: absolute;
-            top: 10%;
-            left: 5%;
-            font-size: 2.5rem; /* 設定較小的標題 */
+            text-align: center;
+            font-size: 2.5rem;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 50px; /* 增加標題與按鈕之間的間距 */
         }
 
         main {
-            position: absolute;
-            top: 25%; /* 調整按鈕位置到標題下方 */
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             gap: 30px; /* 增加按鈕間距 */
         }
 
         button {
-            padding: 20px 40px; /* 增加按鈕的內邊距 */
-            font-size: 2rem; /* 設定較大的字體 */
+            padding: 20px 40px;
+            font-size: 2rem;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0.5);
             border: none;
@@ -60,7 +54,7 @@
         }
 
         button:hover {
-            transform: scale(1.2); /* 讓按鈕放大 */
+            transform: scale(1.2);
             background-color: rgba(0, 0, 0, 0.7);
         }
     </style>
