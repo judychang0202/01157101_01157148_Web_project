@@ -31,225 +31,239 @@
 
             // 獲取歡愉值
             let happyNumber = parseInt(localStorage.getItem('happy_number')) || 0;
+            const currentMode = parseInt(localStorage.getItem('current_mode')) || 1;
+            const count = parseInt(localStorage.getItem('count')) || 0;
 
             // 定義事件內容
             const events = {
                 1: {
                     normal1: { description: "保姆機器人掃地", image: "sweep.jpg" },
                     normal2: { description: "保姆機器人拖地", image: "mop.jpg" },
-                    child: { description: "保姆机器人骑着掃把飛走了又滾回来", image: "wizard.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆機器人騎著掃把飛走了又滾回来", image: "wizard.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 2: {
-                    normal1: { description: "保姆机器人炒菜", image: "dishes.jpg" },
-                    normal2: { description: "保姆机器人煮汤", image: "soup.jpg" },
-                    child: { description: "保姆机器人的锅里爬出了章鱼怪物", image: "octopus.jpg", happyIncrease: 15 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆機器人炒菜", image: "dishes.jpg" },
+                    normal2: { description: "保姆機器人煮湯", image: "soup.jpg" },
+                    child: { description: "保姆機器人的鍋裡爬出了章魚怪物", image: "octopus.jpg", happyIncrease: 15 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 3: {
                     normal1: { description: "保母和小孩一起盪鞦韆", image: "swing.jpg" },
-                    normal2: { description: "抓到小孩想捣蛋，被保姆教训", image: "treat.jpg" },
-                    child: { description: "小孩从车车上摔下来，分裂成了5个小小孩满地乱跑", image: "split.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal2: { description: "抓到小孩想搗蛋，被保姆教訓", image: "treat.jpg" },
+                    child: { description: "小孩從車車上摔下来，分裂成了5個小小孩滿地亂跑", image: "split.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 4: {
-                    normal1: { description: "保姆在沙滩上捡了好几个贝壳", image: "shell.jpg" },
-                    normal2: { description: "保姆堆起了一个沙堡，但是被海水冲垮了", image: "sandcastle.jpg" },
-                    child: { description: "保姆奔向大海，然后大步起跳，直直插了进去", image: "sea.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆在沙灘上撿了好幾個貝殼", image: "shell.jpg" },
+                    normal2: { description: "保姆堆起了一個沙堡，但是被海水沖垮了", image: "sandcastle.jpg" },
+                    child: { description: "保姆奔向大海，然後大步起跳，直直插了进去", image: "sea.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 5: {
-                    normal1: { description: "保姆吃了一块蛋糕", image: "shell.jpg" },
-                    normal2: { description: "保姆喂爬过地板的小孩一塊饼干", image: "sandcastle.jpg" },
-                    child: { description: "保姆被点心吃了", image: "sea.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆吃了一塊蛋糕", image: "cake.jpg" },
+                    normal2: { description: "保姆喂爬過地板的小孩一塊餅乾", image: "cookie.jpg" },
+                    child: { description: "保姆被點心吃了", image: "eaten.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 6: {
-                    normal1: { description: "给大炮拍照", image: "picture.jpg" },
+                    normal1: { description: "給大炮拍照", image: "picture.jpg" },
                     normal2: { description: "講解大炮的歷史給小孩聽", image: "history.jpg" },
-                    child: { description: "保姆塞进了大炮，发射出去", image: "launch.jpg", happyIncrease: 20 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆塞進了大炮，發射出去", image: "launch.jpg", happyIncrease: 20 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 7: {
-                    normal1: { description: "保姆玩手机游戏", image: "phone.jpg" },
-                    normal2: { description: "保姆玩电脑游戏", image: "computer.jpg" },
-                    child: { description: "保姆玩电视游戏，小孩从电视里爬出来", image: "television.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆玩手機遊戲", image: "phone.jpg" },
+                    normal2: { description: "保姆玩電腦遊戲", image: "computer.jpg" },
+                    child: { description: "保姆玩電視遊戲，小孩從電視裡爬出来", image: "television.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 8: {
-                    normal1: { description: "跳specialist"},
-                    normal2: { description: "跳"},
-                    child: { description: "在路中间跳芮克搖引起路人围观",  happyIncrease: 5 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆跳芭蕾", image: "ballet.gif"},
+                    normal2: { description: "保姆陪小孩練習跳健康操", image: "healthy_dance.jpg"},
+                    child: { description: "保姆在路中間跳芮克搖引起路人圍觀", image: "rickroll.gif", happyIncrease: 5 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 9: {
-                    normal1: { description: "保姆喂了小猫一碗干干", image: "cat_cookie.jpg" },
-                    normal2: { description: "保姆喂了小猫一条鱼", image: "fish.jpg" },
-                    child: { description: "小猫叼着一只老鼠追着保姆跑", image: "mouse.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆喂了小貓一碗干干", image: "cat_cookie.jpg" },
+                    normal2: { description: "保姆喂了小貓一條魚", image: "fish.jpg" },
+                    child: { description: "小貓叼著一隻老鼠追著保姆跑", image: "mouse.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 10: {
                     normal1: { description: "保姆刷牙", image: "brush_teeth.jpg" },
-                    normal2: { description: "保姆幫小孩洗脸", image: "wash_face.jpg" },
+                    normal2: { description: "保姆幫小孩洗臉", image: "wash_face.jpg" },
                     child: { description: "用水管和小孩互噴", image: "spray.jpg", happyIncrease: 5 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 11: {
-                    normal1: { description: "骑脚踏车", image: "bicycle.jpg" },
-                    normal2: { description: "搭公车", image: "bus.jpg" },
-                    child: { description: "坐在椅子上被风吹飞", image: "wind_blown.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "騎腳踏車", image: "bicycle.jpg" },
+                    normal2: { description: "搭公車", image: "bus.jpg" },
+                    child: { description: "坐在椅子上被風吹飛", image: "wind_blown.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 12: {
-                    normal1: { description: "买點心", image: "snack.jpg" },
+                    normal1: { description: "買點心", image: "snack.jpg" },
                     normal2: { description: "買玩具", image: "toy.jpg" },
-                    child: { description: "保姆牵了一头牛回来", image: "cow.jpg", happyIncrease: 5 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆牽了一頭牛回來", image: "cow.jpg", happyIncrease: 5 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 13: {
-                    normal1: { description: "保姆用洗衣机", image: "washing_machine.jpg" },
+                    normal1: { description: "保姆用洗衣機", image: "washing_machine.jpg" },
                     normal2: { description: "保姆手洗", image: "handwash.jpg" },
-                    child: { description: "衣服从河里飘走了保姆在追", image: "river.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "衣服從河裡飄走了，保姆在追", image: "river.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 14: {
-                    normal1: { description: "保母打羽球", image: "badminton.jpg" },
-                    normal2: { description: "保母教小孩跳繩", image: "rope.jpg" },
-                    child: { description: "保姆拿着炸弹追著小孩跑，最後保母把自己炸了", image: "bomb.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆打羽球", image: "badminton.jpg" },
+                    normal2: { description: "保姆教小孩跳繩", image: "rope.jpg" },
+                    child: { description: "保姆拿著炸彈追著小孩跑，最後保姆把自己炸了", image: "bomb.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 15: {
                     normal1: { description: "保姆學英文", image: "English.jpg" },
-                    normal2: { description: "保姆教小孩数学", image: "mathematics.jpg" },
+                    normal2: { description: "保姆教小孩數學", image: "mathematics.jpg" },
                     child: { description: "保姆開始學火星文", image: "Mars.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 16: {
                     normal1: { description: "保姆和小孩一起看喜劇", image: "comedy.jpg" },
-                    normal2: { description: "保姆和小孩一起看恐怖电影", image: "terror_movie.jpg" },
-                    child: { description: "保姆变成了投影机", image: "projector.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal2: { description: "保姆和小孩一起看恐怖電影", image: "terror_movie.jpg" },
+                    child: { description: "保姆變成了投影機", image: "projector.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 17: {
                     normal1: { description: "保姆和正常人聊天", image: "chat.jpg" },
-                    normal2: { description: "保姆和路边的乌龟聊天", image: "turtle.jpg" },
-                    child: { description: "保姆和小孩聊天，保姆突然疯了", image: "broken.jpg", happyIncrease: 15 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal2: { description: "保姆和路邊的烏龜聊天", image: "turtle.jpg" },
+                    child: { description: "保姆和小孩聊天，保姆突然瘋掉了", image: "broken.jpg", happyIncrease: 15 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 18: {
                     normal1: { description: "保姆修椅子", image: "chair.jpg" },
                     normal2: { description: "保母修理桌子時，小孩調皮，被保姆修理", image: "table.jpg" },
-                    child: { description: "保姆修墙，小孩在保姆后面拆墙，保母被氣炸", image: "wall.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆修牆，小孩在保姆後面拆牆，保姆被氣炸", image: "wall.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 19: {
                     normal1: { description: "保姆在資源回收分類", image: "resource_recoverry.jpg" },
                     normal2: { description: "保姆丢了一袋垃圾", image: "trash.jpg" },
-                    child: { description: "保姆把小孩丟進了垃圾桶，然後小孩把保母拽進來", image: "trash_can.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆把小孩丟進了垃圾桶，然後小孩把保姆拽進來", image: "trash_can.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 20: {
-                    normal1: { description: "保姆种花", image: "flower.jpg" },
-                    normal2: { description: "保姆种菜", image: "vegetables.jpg" },
-                    child: { description: "保姆种的食人花一口吃掉了保姆和小孩", image: "piranha.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆種花", image: "flower.jpg" },
+                    normal2: { description: "保姆種菜", image: "vegetables.jpg" },
+                    child: { description: "保姆種的食人花一口吃掉了保姆和小孩", image: "piranha.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 21: {
                     normal1: { description: "保姆喝奶茶", image: "milk.jpg" },
                     normal2: { description: "保姆喝咖啡", image: "coffee.jpg" },
-                    child: { description: "保姆在喝喷泉水", image: "fountain.jpg", happyIncrease: 5 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆在喝噴泉水", image: "fountain.jpg", happyIncrease: 5 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 22: {
-                    normal1: { description: "保姆发烧看医生", image: "fever.jpg" },
-                    normal2: { description: "保姆带发烧的小孩看医生", image: "child_fever.jpg" },
-                    child: { description: "保姆一直看着医生發呆，醫生滿臉問號", image: "doctor.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆發燒看醫生", image: "fever.jpg" },
+                    normal2: { description: "保姆带發燒的小孩看醫生", image: "child_fever.jpg" },
+                    child: { description: "保姆一直看著醫生發呆，醫生滿臉問號", image: "doctor.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 23: {
                     normal1: { description: "保姆整理書桌上的書", image: "book.jpg" },
                     normal2: { description: "保姆摺好了被子", image: "quilt.jpg" },
-                    child: { description: "保姆把小孩塞进了柜子里", image: "cabinet.jpg", happyIncrease: 5 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆把小孩塞進了櫃子裡", image: "cabinet.jpg", happyIncrease: 5 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 24: {
                     normal1: { description: "保姆拎著小孩回来", image: "go_home.jpg" },
-                    normal2: { description: "保姆骑脚踏车载小孩回来", image: "bicycle_home.jpg" },
-                    child: { description: "保母抓着小孩起飞，呼啸而过，最後墜機了", image: "fly.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal2: { description: "保姆騎腳踏車載小孩回來", image: "bicycle_home.jpg" },
+                    child: { description: "保母抓著小孩起飛，呼嘯而過，最後墜機了", image: "fly.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 25: {
-                    normal1: { description: "保姆在发呆", image: "daze.jpg" },
-                    normal2: { description: "保姆发呆到睡着了", image: "daze_sleep.jpg" },
-                    child: { description: "小孩在发呆的保姆脸上画画", image: "draw_face.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆正在發呆", image: "daze.jpg" },
+                    normal2: { description: "保姆發呆到睡著了", image: "daze_sleep.jpg" },
+                    child: { description: "小孩在發呆的保姆臉上畫畫", image: "draw_face.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 26: {
-                    normal1: { description: "观察恐龙化石", image: "dinosaur.jpg" },
-                    normal2: { description: "观赏古迹", image: "monuments.jpg" },
-                    child: { description: "保姆扮成野人加入了馆藏", image: "collection.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "觀察恐龍化石", image: "dinosaur.jpg" },
+                    normal2: { description: "觀賞古跡", image: "monuments.jpg" },
+                    child: { description: "保姆扮成野人加入了館藏", image: "collection.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 27: {
-                    normal1: { description: "保姆弹钢琴", image: "piano.jpg" },
+                    normal1: { description: "保姆彈鋼琴", image: "piano.jpg" },
                     normal2: { description: "保姆拉小提琴", image: "violin.jpg" },
-                    child: { description: "保姆用小孩的头打鼓", image: "drum_head.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    child: { description: "保姆用小孩的頭打鼓", image: "drum_head.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 28: {
-                    normal1: { description: "保姆走在树林里", image: "forest.jpg" },
-                    normal2: { description: "保姆在树下乘凉", image: "tree.jpg" },
-                    child: { description: "保姆变成野人从树林里呼啸而过", image: "primitive.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "保姆走在樹林裡", image: "forest.jpg" },
+                    normal2: { description: "保姆在樹下乘涼", image: "tree.jpg" },
+                    child: { description: "保姆變成野人從樹林裡呼嘯而過", image: "primitive.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 29: {
-                    normal1: { description: "包裹里开出了玩具", image: "toy2.jpg" },
-                    normal2: { description: "包裹里开出了水果，保姆和小孩一起把水果吃掉", image: "fruit.jpg" },
-                    child: { description: "包裹里开出了炸弹，发生了大爆炸", image: "big_bomb.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    normal1: { description: "包裹裡開出了玩具", image: "toy2.jpg" },
+                    normal2: { description: "包裹裡開出了水果，保姆和小孩一起把水果吃掉", image: "fruit.jpg" },
+                    child: { description: "包裹裡開出了炸彈，發生了大爆炸", image: "big_bomb.jpg", happyIncrease: 10 },
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
                 30: {
                     normal1: { description: "小孩勝利", image: "child_won.jpg" },
                     normal2: { description: "保母勝利", image: "babysitter.jpg" },
                     child: { description: "保母和小孩扭打在一起，一起滾到終點", image: "roll.jpg", happyIncrease: 10 },
-                    special1: { description: "保姆机器人停止动作，不规则全屏闪现，从画面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
-                    special2: { description: "保姆机器人决定让你感受回家的诱惑", image: "home.jpg", redirect: "shouye.html" }
+                    special1: { description: "保姆機器人停止動作，不規則全屏閃現，從畫面中消失10秒，撞扁在屏幕上慢慢滑下", image: "flash.jpg", happyIncrease: 50 },
+                    special2: { description: "保姆機器人決定讓你感受回家的誘惑", image: "home.jpg", redirect: "shouye.html" }
                 },
             };
 
-            // 定義機率
-            const probabilities = { normal1: 50, normal2: 35, child: 10, special1: 3, special2: 2 };
+            // 設置機率
+            const setProbabilities = () => {
+                if (currentMode === 1) {
+                    return { normal1: 50, normal2: 40, child: 10, special1: 0, special2: 0 };
+                } else if (currentMode === 2) {
+                    if (happyNumber < 50) {
+                        return { normal1: 40, normal2: 30, child: 25, special1: 3, special2: 2 };
+                    } else {
+                        return { normal1: 35, normal2: 25, child: 30, special1: 6, special2: 4 };
+                    }
+                }
+            };
 
-            // 計算事件邏輯
+            const probabilities = setProbabilities();
+
+            // 事件邏輯
             const calculateEvent = () => {
                 const random = Math.random() * 100;
                 let accumulated = 0;
@@ -257,7 +271,7 @@
                     accumulated += value;
                     if (random <= accumulated) return key;
                 }
-                return "normal1"; // 預設事件
+                return "normal1";
             };
 
             // 確定事件
@@ -272,10 +286,24 @@
                 image.className = "event-image";
                 document.getElementById('eventOutcome').appendChild(image);
 
+                // 更新歡愉值
                 if (event.happyIncrease) {
                     happyNumber += event.happyIncrease;
-                    localStorage.setItem('happy_number', happyNumber);
+                } else if (incidentNumber === 3 && chosenEvent === "normal2") {
+                    happyNumber -= 10;
+                } else if (incidentNumber === 18 && chosenEvent === "normal2") {
+                    happyNumber -= 20;
                 }
+
+                // 處理 special2
+                if (chosenEvent === "special2") {
+                    localStorage.setItem('current_mode', 0);
+                    localStorage.setItem('happy_number', 0);
+                    localStorage.setItem('count', 0);
+                    happyNumber = 0; // 即時更新
+                }
+
+                localStorage.setItem('happy_number', happyNumber);
 
                 if (event.redirect) {
                     setTimeout(() => location.href = event.redirect, 2000);
@@ -303,4 +331,3 @@
     </main>
 </body>
 </html>
-

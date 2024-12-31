@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建議列表系統</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+</head>
+
+<body>
+    <!-- 回首頁按鈕 -->
+    <a href="https://judychang0202.github.io/01157101_01157148_Web_project/shouye" style="text-decoration: none;">
+        <button class="home-button">回到首頁</button>
+    </a>
+
+    <h1>給我們一點建議</h1>
+
+    <div class="container">
+        <!-- 左側區域（輸入） -->
+        <div class="left-side">
+            <h2>新增建議與評分</h2>
+            <form id="add-comment-form">
+                <label for="thing">輸入建議內容：</label>
+                <input type="text" id="thing" name="thing" placeholder="輸入您的建議..." required>
+
+                <label for="rating">評分：</label>
+                <select id="rating" name="rating" required>
+                    <option value="" disabled selected>選擇評分</option>
+                    <option value="1">1 分</option>
+                    <option value="2">2 分</option>
+                    <option value="3">3 分</option>
+                    <option value="4">4 分</option>
+                    <option value="5">5 分</option>
+                    <option value="6">6 分</option>
+                    <option value="7">7 分</option>
+                    <option value="8">8 分</option>
+                    <option value="9">9 分</option>
+                    <option value="10">10 分</option>
+                </select>
+
+                <input type="submit" value="送出">
+            </form>
+        </div>
+
+        <!-- 右側區域（顯示） -->
+        <div class="right-side">
+            <h2>大家的建議</h2>
+            <div class="table-container">
+                <table id="comment-list">
+                    <tr>
+                        <th width="50%">建議事項</th>
+                        <th width="20%">評分</th>
+                        <th width="30%">時間</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 取得建議列表
+            $.get('comment', function (comments) {
+                const commentList = $('#comment-list');
+                comments.forEach(function (comment) {
+                    commentList.append(`<tr>
+                        <td>${comment.thing}</td>
+                        <td>${comment.rating || '未評分'}</td>
+                        <td>${new Date(comment.createdDate).toLocaleString()}</td>
+                    </tr>`);
+                });
+            });
+
+            // 提交新建議與評分
+            $('#add-comment-form').submit(function (event) {
+                event.preventDefault(); 
+                const thing = $('#thing').val();
+                const rating = $('#rating').val();
+
+                $.post('comment', { thing, rating }, function (newcomment) {
+                    location.reload(); // 重新載入頁面
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

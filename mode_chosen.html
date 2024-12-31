@@ -16,29 +16,29 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* 將內容置於上方 */
+            justify-content: flex-start;
             align-items: center;
-            padding-top: 40px; /* 讓標題更靠近頂部 */
+            padding-top: 40px;
         }
         header h1 {
             font-size: 6em;
-            margin-bottom: 20px; /* 減少標題底部的間距 */
+            margin-bottom: 20px;
         }
         main {
             display: flex;
-            justify-content: center; /* 讓按鈕置中 */
-            width: 100%; /* 讓按鈕佔滿可用寬度 */
+            justify-content: center;
+            width: 100%;
         }
         button {
             font-size: 5em;
-            padding: 100px 50px; /* 增加按鈕的長度，讓長 > 寬 */
-            background-color: plum; /* Tomate */
+            padding: 100px 50px;
+            background-color: plum;
             color: powderblue;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin: 0 30px; /* 在按鈕間加點間距 */
+            margin: 0 30px;
         }
         button:hover {
             background-color: white;
@@ -47,19 +47,12 @@
     <script>
         function selectMode(mode) {
             localStorage.setItem('mode', mode);
-            // 設定機率
+            const currentMode = parseInt(localStorage.getItem('current_mode')) || 0;
+            // 設定 current_mode
             if (mode === 'normal') {
-                localStorage.setItem('normal1_chance', 45);
-                localStorage.setItem('normal2_chance', 45);
-                localStorage.setItem('child_chance', 10);
-                localStorage.setItem('special1_chance', 0);
-                localStorage.setItem('special2_chance', 0);
+                localStorage.setItem('current_mode', 1);
             } else if (mode === 'exciting') {
-                localStorage.setItem('normal1_chance', 35);
-                localStorage.setItem('normal2_chance', 35);
-                localStorage.setItem('child_chance', 25);
-                localStorage.setItem('special1_chance', 2.5);
-                localStorage.setItem('special2_chance', 2.5);
+                localStorage.setItem('current_mode', 2);
             }
             location.href = 'card.html';
         }

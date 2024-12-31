@@ -1,0 +1,129 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('background2.jpg');
+  background-repeat: no-repeat;  /* 禁止背景圖片重複 */
+  background-size: cover;       /* 讓圖片覆蓋整個背景 */
+  background-position: center;  /* 圖片居中顯示 */
+  margin: 0;
+  padding: 0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+h1 {
+  text-align: center;
+  color: #444;
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+/* 調整左側與右側區域 */
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1500px;  /* 可以根據需要增加容器的最大寬度 */
+  margin-top: 40px;
+}
+
+/* 左側區域（輸入） */
+.left-side {
+  flex: 1.5; /* 增加左側區域的寬度 */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+/* 右側區域（顯示） */
+.right-side {
+  flex: 1.5; /* 增加右側區域的寬度 */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #0078D7;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+form {
+  margin: 20px 0;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; /* 確保寬度計算時包含 padding 和 border */
+}
+
+input[type="submit"] {
+  background-color: #0078D7;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+/* 回首頁按鈕 */
+.home-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #0078D7;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background-color: #005bb5;
+}
