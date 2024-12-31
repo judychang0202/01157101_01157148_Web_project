@@ -13,7 +13,7 @@
             position: relative;
             font-family: 'Pacifico', cursive;
             height: 100vh;
-            overflow: hidden; /* 確保不會有滾動條 */
+            overflow: hidden;
         }
 
         .background2 {
@@ -36,7 +36,7 @@
             width: 40%;
             height: auto;
             z-index: -1;
-            background-color: transparent; /* 強制背景透明 */
+            background-color: transparent;
         }
 
         main {
@@ -55,38 +55,33 @@
             margin-bottom: 30px;
         }
 
-        button {
-            font-size: 2em;
-            padding: 20px 40px;
-            margin: 15px;
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button, a.link-button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            margin: 10px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             background-color: plum;
-            color: powderblue; /* 修改字體顏色 */
+            color: powderblue;
             box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
             transition: transform 0.2s, background-color 0.2s;
+            width: 250px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            box-sizing: border-box;
         }
 
-        button:hover {
+        button:hover, a.link-button:hover {
             background-color: rgba(255, 255, 255, 1);
             transform: scale(1.1);
-        }
-
-        .link-button {
-            font-size: 1.5em; /* Smaller font size */
-            padding: 15px 30px;
-            background-color: plum; /* Adjust the background color */
-            color: powderblue;
-            text-decoration: none;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .link-button:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            transform: scale(1.05);
         }
     </style>
 </head>
@@ -95,13 +90,12 @@
     <img src="background1.jpg" alt="Background 1" class="background1">
     <main>
         <h1>保姆機器人</h1>
-        <button onclick="location.href='game_rule.html'">遊戲規則</button>
-        <button onclick="location.href='mode_chosen.html'">開始遊戲</button>
-        <!-- New Link Button for the Project Presentation -->
-        <br/>
-        <a href="https://docs.google.com/presentation/d/1Zh7Jf31bc6gNzVnl5Q8ZIlDuV8AbP6uZYb_nAoeu2so/edit?usp=sharing" class="link-button" target="_blank">專案簡報</a>
+        <div class="button-container">
+            <button onclick="location.href='game_rule.html'">遊戲規則</button>
+            <button onclick="location.href='mode_chosen.html'">開始遊戲</button>
+            <a href="https://docs.google.com/presentation/d/1Zh7Jf31bc6gNzVnl5Q8ZIlDuV8AbP6uZYb_nAoeu2so/edit?usp=sharing" class="link-button" target="_blank">專案簡報</a>
+            <a href="https://web-1131-2.onrender.com/" class="link-button" target="_blank">留言板</a>
+        </div>
     </main>
 </body>
 </html>
-
-
